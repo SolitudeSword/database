@@ -8,14 +8,16 @@ interface ConnectionInterface
 {
     /**
      * Begin a fluent query against a database table.
+     * 对数据库表建立一个流式查询
      *
-     * @param  string  $table
+     * @param  string  $table 表名
      * @return \Illuminate\Database\Query\Builder
      */
     public function table($table);
 
     /**
      * Get a new raw query expression.
+     * 获取一个新的原始查询表达式
      *
      * @param  mixed  $value
      * @return \Illuminate\Database\Query\Expression
@@ -24,6 +26,7 @@ interface ConnectionInterface
 
     /**
      * Run a select statement and return a single result.
+     * 运行select语句并返回单个结果
      *
      * @param  string  $query
      * @param  array   $bindings
@@ -34,6 +37,7 @@ interface ConnectionInterface
 
     /**
      * Run a select statement against the database.
+     * 对数据库运行select语句
      *
      * @param  string  $query
      * @param  array   $bindings
@@ -44,6 +48,7 @@ interface ConnectionInterface
 
     /**
      * Run a select statement against the database and returns a generator.
+     * 对数据库运行select语句并返回生成器
      *
      * @param  string  $query
      * @param  array  $bindings
@@ -54,6 +59,7 @@ interface ConnectionInterface
 
     /**
      * Run an insert statement against the database.
+     * 对数据库执行一条insert语句
      *
      * @param  string  $query
      * @param  array   $bindings

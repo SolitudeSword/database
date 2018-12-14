@@ -12,10 +12,16 @@ use Illuminate\Database\PostgresConnection;
 use Illuminate\Database\SqlServerConnection;
 use Illuminate\Contracts\Container\Container;
 
+/**
+ * Class ConnectionFactory
+ * @package Illuminate\Database\Connectors
+ * DB 连接的工厂方法
+ */
 class ConnectionFactory
 {
     /**
      * The IoC container instance.
+     * IoC 容器实例
      *
      * @var \Illuminate\Contracts\Container\Container
      */
@@ -34,8 +40,20 @@ class ConnectionFactory
 
     /**
      * Establish a PDO connection based on the configuration.
+     * 根据配置构建一个 PDO 连接
      *
-     * @param  array   $config
+     * @param  array   $config 配置信息，可能的结构如下：{
+     *      driver : 驱动类型，mysql
+     *      host : 数据库IP地址
+     *      port : 端口号
+     *      database : 数据库名
+     *      username : 数据库用户名
+     *      password : 数据库密码
+     *      charset : 字符集
+     *      collation : 字符校准
+     *      prefix : 表名前缀
+     *      strict : true/false
+     * }
      * @param  string  $name
      * @return \Illuminate\Database\Connection
      */
@@ -73,7 +91,11 @@ class ConnectionFactory
         $pdo = $this->createPdoResolver($config);
 
         return $this->createConnection(
-            $config['driver'], $pdo, $config['database'], $config['prefix'], $config
+            $config['driver'],
+            $pdo,
+            $config['database'],
+            $config['prefix'],
+            $config
         );
     }
 

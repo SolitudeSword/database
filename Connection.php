@@ -153,10 +153,10 @@ class Connection implements ConnectionInterface
     /**
      * Create a new database connection instance.
      *
-     * @param  \PDO|\Closure     $pdo
-     * @param  string   $database
-     * @param  string   $tablePrefix
-     * @param  array    $config
+     * @param  \PDO|\Closure     $pdo PDO的生成闭包或实例
+     * @param  string   $database 数据库名
+     * @param  string   $tablePrefix 数据库表前缀
+     * @param  array    $config 配置
      * @return void
      */
     public function __construct($pdo, $database = '', $tablePrefix = '', array $config = [])
@@ -166,6 +166,7 @@ class Connection implements ConnectionInterface
         // First we will setup the default properties. We keep track of the DB
         // name we are connected to since it is needed when some reflective
         // type commands are run such as checking whether a table exists.
+        # 首先设置默认属性。跟踪连接的 DB 名称，因为在运行某些反射类型的命令时需要它，例如检查表是否存在
         $this->database = $database;
 
         $this->tablePrefix = $tablePrefix;
@@ -175,6 +176,8 @@ class Connection implements ConnectionInterface
         // We need to initialize a query grammar and the query post processors
         // which are both very important parts of the database abstractions
         // so we initialize these to their default values while starting.
+        # 我们需要初始化一个查询语法和查询后处理器，它们都是数据库抽象的非常重要的部分
+        # 所有在启动时将它们初始化为默认值
         $this->useDefaultQueryGrammar();
 
         $this->useDefaultPostProcessor();
